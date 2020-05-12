@@ -34,8 +34,11 @@ let { src, dest } = require("gulp"),
   cleancss = require("gulp-clean-css"),
   rename = require("gulp-rename"),
   uglify = require("gulp-uglify-es").default,
+  imagemin = require("gulp-imagemin"),
   del = require("del"),
-  scss = require("gulp-sass");
+  scss = require("gulp-sass"),
+  ttf2woff = require("gulp-ttf2woff"),
+  ttf2woff2 = require("gulp-ttf2woff2");
 
 function browserSync(params) {
   browsersync.init({
@@ -96,18 +99,44 @@ function css() {
     .pipe(browsersync.stream());
 }
 
+function images() {
+  return src(path.src.img)
+    .pipe(
+      imagemin({
+        progressive: true,
+        svgoPlugins: [{ removeViewBox: false }],
+        interlaced: true,
+        optimizationLevel: 3,
+      })
+    )
+    .pipe(dest(path.build.img))
+    .pipe(browsersync.stream());
+}
+
+function fonts() {
+  src(path.src.fonts)
+    .pipe(ttf2woff())
+    .pipe(dest(path.build.fonts));
+  return src(path.src.fonts)
+    .pipe(ttf2woff2())  
+    .pipe(dest(path.build.fonts));
+}
+
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.img], images);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html));
+let build = gulp.series(clean, gulp.parallel(fonts, js, css, images, html));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.js = js;
+exports.images = images;
 exports.css = css;
 exports.html = html;
+exports.fonts = fonts;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
