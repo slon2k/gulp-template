@@ -175,9 +175,10 @@ h6 {
 .burger {
   cursor: pointer;
   display: block;
-  height: 30px;
+  height: 40px;
   position: relative;
-  width: 30px;
+  width: 40px;
+  display: none;
 }
 
 .burger span {
@@ -219,4 +220,10 @@ h6 {
 
 .burger--active span:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .burger {
+    display: block;
+  }
 }

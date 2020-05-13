@@ -18,8 +18,8 @@ let path = {
   },
   watch: {
     html: source_folder + "/**/*.html",
-    css: source_folder + "/styles/**/*.scss",
-    js: source_folder + "/js/**/*.js",
+    css: source_folder + "/**/*.scss",
+    js: source_folder + "/**/*.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
   },
   clean: "./" + project_folder + "/",
