@@ -115,6 +115,7 @@ function images() {
 
 function fonts() {
   src(path.src.fonts)
+    .pipe(dest(path.build.fonts))
     .pipe(ttf2woff())
     .pipe(dest(path.build.fonts));
   return src(path.src.fonts)
