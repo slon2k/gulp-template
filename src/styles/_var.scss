@@ -23,3 +23,16 @@ $link-focus: grey;
 $link-focus-border: blue;
 $link-active: grey;
 $link-active-border: grey;
+
+//Responsive
+$gap: 32px;
+$tablet: 769px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 1152px + (2 * $gap);
+$fullhd: 1344px + (2 * $gap);
+
+$easing: ease-out;
+$radius-small: 2px;
+$radius: 4px;
+$radius-large: 6px;
+$speed: 100ms;

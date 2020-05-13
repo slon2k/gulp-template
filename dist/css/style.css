@@ -161,3 +161,62 @@ strong {
 fieldset {
   border: none;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.burger {
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.burger span {
+  background-color: currentColor;
+  display: block;
+  height: 1px;
+  left: calc(50% - 8px);
+  position: absolute;
+  transform-origin: center;
+  transition-duration: 100ms;
+  transition-property: background-color, opacity, transform;
+  transition-timing-function: ease-out;
+  width: 16px;
+}
+
+.burger span:nth-child(1) {
+  top: calc(50% - 6px);
+}
+
+.burger span:nth-child(2) {
+  top: calc(50% - 1px);
+}
+
+.burger span:nth-child(3) {
+  top: calc(50% + 4px);
+}
+
+.burger:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.burger--active span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.burger--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger--active span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}

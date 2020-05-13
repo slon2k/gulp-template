@@ -13,6 +13,9 @@ $strong-weight: 600;
 
 $small-font-size: 0.875em;
 
+$headings-weight: 600;
+$headings-size: 1.2em;
+
 html {
   background-color: $body-background-color;
   font-size: $body-font-size;
@@ -73,4 +76,14 @@ strong {
 
 fieldset {
   border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: $headings-size;
+  font-weight: $headings-weight;
 }
